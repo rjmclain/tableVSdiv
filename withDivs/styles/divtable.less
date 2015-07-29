@@ -1,0 +1,185 @@
+﻿@color-main-blue: #2795d9;
+@color-shaded-blue: #2286c4;
+@color-light-blue: #6ec7f2;
+@color-white: #ffffff;
+@color-pink: #ee2b89;
+@color-grey: #afbed8;
+@color-light-grey: #f8f8f8;
+
+@small-screen: ~"only screen and (max-width: 720px)";
+
+
+html, body {
+    margin: 0 0 0 0;
+    height: 100%;
+    position: relative;
+    font-family: sans-serif;
+}
+
+body *{
+    box-sizing: border-box;
+}
+
+.navigation {
+    background: @color-main-blue;
+    color: @color-white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 0.8em;
+    width: 175px;
+    z-index: 1000;
+
+    .main-logo {
+        background: @color-shaded-blue;
+        height: 53px;
+        padding: 10px 0;
+        text-align: center;
+
+        .logo-image {
+            max-width: 80%;
+        }
+    }
+    ol {
+        margin: 10px 0 0 0;
+        padding: 0;
+        
+        li {
+            border-left: 5px solid @color-main-blue;
+            cursor: pointer;
+            padding: 10px;
+
+            &:hover {
+                background: @color-shaded-blue;
+                border-left: 5px solid @color-shaded-blue;
+            }
+
+            &.selected {
+                background: @color-shaded-blue;
+                border-left: 5px solid @color-pink;
+            }
+        }
+    }
+}
+
+.main-content {
+    margin: 0 0 0 175px;
+    position: relative;
+}
+
+.search-header {
+    background: @color-white;
+    padding: 0 10px 0 190px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 20;
+    h2 {
+        .results-num {
+            color: @color-grey;
+        }
+    }
+    .search-area{
+        border-bottom: 2px solid @color-main-blue;
+        padding: 15px 0;
+        width: 90%;
+
+        ::-webkit-input-placeholder {
+           color: @color-light-blue;
+        }
+
+        :-moz-placeholder { /* Firefox 18- */
+           color: @color-light-blue;  
+        }
+
+        ::-moz-placeholder {  /* Firefox 19+ */
+           color: @color-light-blue;  
+        }
+
+        :-ms-input-placeholder {  
+           color: @color-light-blue;  
+        }
+
+        input {
+            border: none;
+            font-size: 1.2em;
+            width: 100%;
+        }
+
+    }
+
+}
+
+.label-row {
+    display: block;
+    padding: 10px 0;
+
+    @media @small-screen {
+        display: none;
+    }
+    .column {
+        display: inline-block;
+        width: 24%;
+    }
+}
+
+.results-container {
+    margin-top: 165px;
+    .result-row {
+        display: block;
+        padding: 10px 0 10px 15px;
+        &.selected {
+            color: @color-pink;
+            &:before {
+                content: ">";
+
+            }
+        }
+        &:nth-child(odd) {
+            background: @color-light-grey;
+        }
+        .column {
+            display: inline-block;
+            width: 24%;
+            &:before {
+                color: @color-grey;
+            }
+            &.name {
+                &:before {
+                    @media @small-screen {
+                        content: "Name:";
+                    }     
+                }
+            }
+            &.phone {
+                &:before {
+                    @media @small-screen {
+                        content: "Phone:";
+                    }     
+                }
+            }
+            &.dob {
+                &:before {
+                    @media @small-screen {
+                        content: "DOB:";
+                    }     
+                }
+            }
+            &.appt {
+                &:before {
+                    @media @small-screen {
+                        content: "Appt:";
+                    }     
+                }
+            }
+            @media @small-screen {
+                width: 100%;
+            }
+        }
+    }
+    .phone-type {
+        color: @color-grey;
+    }
+}

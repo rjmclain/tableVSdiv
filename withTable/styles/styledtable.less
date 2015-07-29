@@ -1,0 +1,184 @@
+﻿@color-main-blue: #2795d9;
+@color-shaded-blue: #2286c4;
+@color-light-blue: #6ec7f2;
+@color-white: #ffffff;
+@color-pink: #ee2b89;
+@color-grey: #afbed8;
+@color-light-grey: #f8f8f8;
+
+@small-screen: ~"only screen and (max-width: 720px)";
+
+
+html, body {
+    margin: 0 0 0 0;
+    height: 100%;
+    position: relative;
+    font-family: sans-serif;
+}
+
+body *{
+    box-sizing: border-box;
+}
+
+.navigation {
+    background: @color-main-blue;
+    color: @color-white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 0.8em;
+    width: 175px;
+    z-index: 1000;
+
+    .main-logo {
+        background: @color-shaded-blue;
+        height: 53px;
+        padding: 10px 0;
+        text-align: center;
+
+        .logo-image {
+            max-width: 80%;
+        }
+    }
+    ol {
+        margin: 10px 0 0 0;
+        padding: 0;
+        
+        li {
+            border-left: 5px solid @color-main-blue;
+            cursor: pointer;
+            padding: 10px;
+
+            &:hover {
+                background: @color-shaded-blue;
+                border-left: 5px solid @color-shaded-blue;
+            }
+
+            &.selected {
+                background: @color-shaded-blue;
+                border-left: 5px solid @color-pink;
+            }
+        }
+    }
+}
+
+.main-content {
+    margin: 0 0 0 175px;
+    position: relative;
+}
+
+.search-header {
+    background: @color-white;
+    padding: 0 10px 10px 190px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 20;
+    h2 {
+        .results-num {
+            color: @color-grey;
+        }
+    }
+    .search-area{
+        border-bottom: 2px solid @color-main-blue;
+        padding: 15px 0;
+        width: 90%;
+
+        ::-webkit-input-placeholder {
+           color: @color-light-blue;
+        }
+
+        :-moz-placeholder { /* Firefox 18- */
+           color: @color-light-blue;  
+        }
+
+        ::-moz-placeholder {  /* Firefox 19+ */
+           color: @color-light-blue;  
+        }
+
+        :-ms-input-placeholder {  
+           color: @color-light-blue;  
+        }
+
+        input {
+            border: none;
+            font-size: 1.2em;
+            width: 100%;
+        }
+
+    }
+
+}
+
+
+.search-results {  
+  border-collapse: collapse; 
+  border: none;
+  margin-top: 180px;
+  width: 100%;
+  @media @small-screen {
+      display: block;
+  }
+
+  td {
+      span {
+          color: @color-grey;
+      }
+      @media @small-screen {
+          border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%;
+        &:before {
+            color: @color-grey;
+            display: inline-block;
+            padding-right: 5px;
+      }
+        &:nth-of-type(1):before { content: "Name:"; }
+	    &:nth-of-type(2):before { content: "Phone:"; }
+	    &:nth-of-type(3):before { content: "DOB:"; }
+	    &:nth-of-type(4):before { content: "Appt:"; }
+      }
+      
+  }
+
+  th { 
+    background: @color-white;  
+  }
+
+  td, th { 
+    padding: 10px; 
+    text-align: left; 
+  }
+
+  thead {
+      tr {
+          @media @small-screen {
+              position: absolute;
+              top: -9999px;
+              left: -9999px;
+          }
+      }
+  }
+
+  tr {
+      &:nth-of-type(odd) { 
+        background: @color-light-grey; 
+      }
+      @media @small-screen {
+          border: 1px solid #ccc;
+      }
+      &.selected {
+          color: @color-pink;
+      }
+  }
+
+  thead, tbody, th, td, tr {
+      @media @small-screen{
+          display: block;
+      }
+    }
+}
+
